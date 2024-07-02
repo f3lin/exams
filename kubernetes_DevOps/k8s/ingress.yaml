@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+# annotation "kubernetes.io/ingress.class" is deprecated, please use 'spec.ingressClassName' instead
+#  annotations:
+#    kubernetes.io/ingress.class: "traefik"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: pgadmin.mk8s.gleeze.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: pgadmin
+            port:
+              number: 80
+  - host: fastapi.mk8s.gleeze.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: fastapi
+            port:
+              number: 5000

@@ -1,12 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-ingress
-# annotation "kubernetes.io/ingress.class" is deprecated, please use 'spec.ingressClassName' instead
-#  annotations:
-#    kubernetes.io/ingress.class: "traefik"
+  name: exam-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: traefik
+  tls:
+    - secretName: exam-tls-secret
+      hosts:
+        - pgadmin.mk8s.gleeze.com
+        - fastapi.mk8s.gleeze.com
   rules:
   - host: pgadmin.mk8s.gleeze.com
     http:

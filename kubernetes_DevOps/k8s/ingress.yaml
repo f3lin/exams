@@ -1,18 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: exam-ingress
+  name: rancher-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: traefik
   tls:
-    - secretName: exam-tls-secret
+    - secretName: rancher-secret
       hosts:
-        - pgadmin.mk8s.gleeze.com
-        - fastapi.mk8s.gleeze.com
+        - pgadmin.cluster.cloudns.be
+        - fastapi.cluster.cloudns.be
   rules:
-  - host: pgadmin.mk8s.gleeze.com
+  - host: pgadmin.cluster.cloudns.be
     http:
       paths:
       - path: /
@@ -22,7 +22,7 @@ spec:
             name: pgadmin
             port:
               number: 80
-  - host: fastapi.mk8s.gleeze.com
+  - host: fastapi.cluster.cloudns.be
     http:
       paths:
       - path: /

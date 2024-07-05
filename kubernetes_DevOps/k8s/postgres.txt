@@ -1,0 +1,60 @@
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... posix
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting default time zone ... UTC
+creating configuration files ... ok
+running bootstrap script ... ok
+sh: locale: not found
+2024-07-04 15:53:51.035 UTC [27] WARNING:  no usable system locales were found
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+initdb: warning: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+waiting for server to start....2024-07-04 15:53:51.999 UTC [31] LOG:  starting PostgreSQL 12.0 on x86_64-pc-linux-musl, compiled by gcc (Alpine 8.3.0) 8.3.0, 64-bit
+2024-07-04 15:53:52.002 UTC [31] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2024-07-04 15:53:52.031 UTC [32] LOG:  database system was shut down at 2024-07-04 15:53:51 UTC
+2024-07-04 15:53:52.036 UTC [31] LOG:  database system is ready to accept connections
+ done
+server started
+CREATE DATABASE
+
+
+/usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+
+waiting for server to shut down....2024-07-04 15:53:52.209 UTC [31] LOG:  received fast shutdown request
+2024-07-04 15:53:52.212 UTC [31] LOG:  aborting any active transactions
+2024-07-04 15:53:52.215 UTC [31] LOG:  background worker "logical replication launcher" (PID 38) exited with exit code 1
+2024-07-04 15:53:52.215 UTC [33] LOG:  shutting down
+2024-07-04 15:53:52.241 UTC [31] LOG:  database system is shut down
+ done
+server stopped
+
+PostgreSQL init process complete; ready for start up.
+
+2024-07-04 15:53:52.321 UTC [1] LOG:  starting PostgreSQL 12.0 on x86_64-pc-linux-musl, compiled by gcc (Alpine 8.3.0) 8.3.0, 64-bit
+2024-07-04 15:53:52.321 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2024-07-04 15:53:52.321 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2024-07-04 15:53:52.326 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2024-07-04 15:53:52.350 UTC [42] LOG:  database system was shut down at 2024-07-04 15:53:52 UTC
+2024-07-04 15:53:52.356 UTC [1] LOG:  database system is ready to accept connections
+2024-07-04 16:14:23.891 UTC [94] FATAL:  password authentication failed for user "admin"
+2024-07-04 16:14:23.891 UTC [94] DETAIL:  Password does not match for user "admin".
+	Connection matched pg_hba.conf line 95: "host all all all md5"
